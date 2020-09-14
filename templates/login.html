@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>GoodsDelivery</title>
+</head>
+<body>
+  <div>
+    <h1 class="ml-5">GoodsDelivery</h1>
+
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link active" href="/index">Main Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/goods">Order goods</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/about">Who are we?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/contacts">Contacts</a>
+        </li>
+    </ul>
+</div>
+<div class="ui content">
+  <div class="ui raised segment login-segment">
+      <div class="ui middle aligned center aligned grid">
+          <div class="column" style="max-width: 40rem;">
+              <h2 class="ui inverted violet image header">
+                  <div class="content">Вход в акканут</div>
+              </h2>
+              <form class="ui large form" method="post" action="/auth/login">
+                  <div class="ui stacked segment">
+                      <div class="field">
+                          <div class="ui left icon action input">
+                              <i class="lock icon"></i>
+                              <input type="password" id="password" maxlength="6" pattern="\d*" name="code" placeholder="Password" autocomplete="on">
+                              <a id="showpsswd" class="ui icon basic button"><i id="eye" class="eye link icon"></i></a>
+                              <script>
+                                  $('#password').keypress(function (e) {
+                                      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                                          return false;
+                                      }
+                                  });
+                                  var show = false;
+                                  $('#showpsswd').click(function (e) {
+                                      if (show) {$("#password").attr("type", "password"); $("#eye").removeClass("slash"); show = false;} else {$("#password").attr("type", "text"); $("#eye").addClass("slash"); show = true;}
+                                  })
+                              </script>
+                          </div>
+                      </div>
+                  
+                      <button type="submit" class="ui inverted violet button large fluid">Войти</button>
+                  </div>
+              </form>
+                              <div class="ui message">
+                  <a href="/auth/reg">Регистрация</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>ПАРАЛЛЕЛИ</title>
+    <style>
+      form.form1{
+      color: white;
+      margin: 20px 0 20px 0;
+      padding: 200px;
+        }
+      hr{
+        border: none; /* Убираем границу */
+        background-color: blue; /* Цвет линии */
+        color: blue; /* Цвет линии для IE6-7 */
+        height: 2px; /* Толщина линии */
+        margin: 50px;
+        }
+      {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .content {
+        flex: 1 0 auto;
+      }
+      .footer {
+        flex: 0 0 auto;
+      }
+    </style>
+    <script>  
+      width=document.body.clientWidth; // ширина  
+      height=document.body.clientHeight; // высота  
+    </script> 
+    <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=40d1649f-0493-4b70-98ba-98533de7710b" type="text/javascript"></script>
+    <script>
+      function myFunc(){
+        let new1 = {
+          address: document.getElementById('address').value
+        }
+        let json1 = JSON.stringify(document.getElementById('address').value)
+        alert(json1)
+      }
+        
+
+    // Функция ymaps.ready() будет вызвана, когда
+    // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    ymaps.ready(init);
+ 
+function init() {
+    var myMap = new ymaps.Map('map', {
+        center: [59.14, 37.9],
+        zoom: 9
+    });
+
+    // Поиск координат центра Нижнего Новгорода.
+    ymaps.geocode(r, {
+        /**
+         * Опции запроса
+         * @see https://api.yandex.ru/maps/doc/jsapi/2.1/ref/reference/geocode.xml
+         */
+        // Сортировка результатов от центра окна карты.
+        // boundedBy: myMap.getBounds(),
+        // strictBounds: true,
+        // Вместе с опцией boundedBy будет искать строго внутри области, указанной в boundedBy.
+        // Если нужен только один результат, экономим трафик пользователей.
+        results: 1
+    }).then(function (res) {
+            // Выбираем первый результат геокодирования.
+            var firstGeoObject = res.geoObjects.get(0),
+                // Координаты геообъекта.
+                coords = firstGeoObject.geometry.getCoordinates(),
+                // Область видимости геообъекта.
+                bounds = firstGeoObject.properties.get('boundedBy');
+
+            firstGeoObject.options.set('preset', 'islands#darkBlueDotIconWithCaption');
+            // Получаем строку с адресом и выводим в иконке геообъекта.
+            firstGeoObject.properties.set('iconCaption', firstGeoObject.getAddressLine());
+
+            // Добавляем первый найденный геообъект на карту.
+            myMap.geoObjects.add(firstGeoObject);
+            // Масштабируем карту на область видимости геообъекта.
+            myMap.setBounds(bounds, {
+                // Проверяем наличие тайлов на данном масштабе.
+                checkZoomRange: true
+            });
+
+        });
+}
+    </script>
+</head>
+<body>
+<div class="wrapper">
+<div class="content">
+  <div>
+    <h1 class="ml-5">Сайт Калининградского ПЕН-центра
+    <img src="https://sun9-54.userapi.com/c857320/v857320278/17ab71/PLa_D6qPLTA.jpg" width=4% alt="бот"/>
+    </h1>
+    <p></p>
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" href="/main">ГЛАВНАЯ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/event">СОБЫТИЯ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/couriers">НАША БИБЛИОТЕКА</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">ГАЛЕРЕЯ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contacts">ПРОЕКТЫ</a>
+        </li>
+    </ul>
+    <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+              <a class="nav-link active" href="/main">АВТОРСКОЕ СЛОВО</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/index">ЧАСТНОЕ МНЕНИЕ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/couriers">МОЛОДЫЕ ГОЛОСА</a>
+            </li>
+    </ul>
+
+  </div>
+  <p></p>
+  <h3 class="ml-5">Register your product</h3>
+  <hr>
+  <form action="/create-task" method="POST" class="ml-5"; style='height: 30%;float: left;'>
+  <div class="form-group">
+    <label for="name">Your name</label>
+    <input type="name" class="form-control" name='name' id="fullname" aria-describedby="nameHelp" placeholder="Full Name" autofocus>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="address" class="form-control" name='address' id="address" aria-describedby="addressHelp" placeholder="Full address">
+    <button type="button" id="address" onclick="myFunc ()">Check your address</button>
+  </div>
+  <div class="form-group">
+    <label for="goods">Your goods</label>
+    <input type="goods" class="form-control" name='goods' id="goods" aria-describedby="nameHelp" placeholder="Your goods">
+  </div>
+  <div class="form-group">
+    <label for="period">The period of placement</label>
+    <select class="form-control" name='period' id="period">
+      <option>1 day</option>
+      <option>1 weeks</option>
+      <option>1 month</option>
+      <option>1 year</option>
+      <option>forever</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Comentarios">Comentarios</label>
+    <input class="form-control" name='coment' id="Comentarios" rows="3">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File photo </label>
+    <textarea type="goods" class="form-control" name='photo' id="goods" aria-describedby="nameHelp" placeholder="Insert the link"></textarea>
+    <script async src="//wampi.ru/sdk/pup.js" data-url="https://wampi.ru/upload" data-palette="blue" data-auto-insert="direct-links"></script>
+    <small id="fileHelp" class="form-text text-muted">Try to show your product in full in the photo</small>
+
+  </div>
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+
+<div id="map" style="width: 73%; height: 620px; float: right; margin-right: 3%;"></div>
+  
+</div>
+
+<hr>
+<div class="footer">
+    <div class="card bg-dark text-white">
+      <img src="https://sun1-15.userapi.com/ifbQNgHTvHVfWHY9bUYcX4FrK_UKkZ_lmog_Xg/CEIAdlR2QK0.jpg" class="card-img" alt="...">
+      <div class="card-img-overlay">
+        <h5 class="card-title">Название карточки</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text" align="right">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+</body>
+</html>

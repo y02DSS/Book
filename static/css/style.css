@@ -1,0 +1,12 @@
+.cardholder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+.form.form1{
+  color: white;
+  margin: 20px 0 20px 0;
+  padding: 200px;
+    

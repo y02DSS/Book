@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>ПАРАЛЛЕЛИ</title>
+  <style>
+      hr{
+          border: none; /* Убираем границу */
+          background-color: blue; /* Цвет линии */
+          color: blue; /* Цвет линии для IE6-7 */
+          height: 2px; /* Толщина линии */
+          margin: 50px;
+          }
+      {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .content {
+        flex: 1 0 auto;
+      }
+      .footer {
+        flex: 0 0 auto;
+      }
+  </style> 
+  <script type="text/javascript" src="https://vk.com/js/api/openapi.js?168"></script>
+</head>
+<body>
+<div class="wrapper">
+<div class="content">
+  <div>
+    <h1  class="ml-5">Сайт Калининградского ПЕН-центра
+    <img src="https://sun9-54.userapi.com/c857320/v857320278/17ab71/PLa_D6qPLTA.jpg" width=4% alt="бот"/>
+    </h1>
+    <p></p>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+<div id="map" style="width:450px;height:300px"></div>
+
+<script type="text/javascript">
+ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+        center: [55.753994, 37.622093],
+        zoom: 9,
+        controls: ['routePanelControl']
+    });
+
+    // Получение ссылки на панель маршрутизации.
+    var control = myMap.controls.get('routePanelControl');
+
+    // Задание состояния для панели маршрутизации.
+    control.routePanel.geolocate('from');
+    control.routePanel.state.set({
+        // Адрес начальной точки.
+        // Адрес конечной точки.
+        to: 'метро Черемушки'
+    });
+});
+</script>
+<div class="footer">
+    <div class="card bg-dark text-white">
+      <img src="https://sun1-15.userapi.com/ifbQNgHTvHVfWHY9bUYcX4FrK_UKkZ_lmog_Xg/CEIAdlR2QK0.jpg" class="card-img" alt="...">
+      <div class="card-img-overlay">
+        <h5 class="card-title">GoodsDelivery</h5>
+        <p class="card-text">This website it is property Sofronov Sergei ans Shkolnikov Elisei. All products it is forbidden to use it without written confirmation.</p>
+        <p class="card-text" align="right">2020. GoodsDelivery</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div> 
+</body>
+</html>

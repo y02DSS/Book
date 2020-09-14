@@ -1,0 +1,36 @@
+h3 class="ml-5">Register your product</h3>
+  <hr>
+  <form action="/create-task" method="POST" class="ml-5"; style='height: 30%;float: left;'>
+  <div class="form-group">
+    <label for="name">Your name</label>
+    <input type="name" class="form-control" name='name' id="fullname" aria-describedby="nameHelp" placeholder="Full Name" autofocus>
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="address" class="form-control" name='address' id="address" aria-describedby="addressHelp" placeholder="Full address">
+  </div>
+  <div class="form-group">
+    <label for="goods">Your goods</label>
+    <input type="goods" class="form-control" name='goods' id="goods" aria-describedby="nameHelp" placeholder="Your goods">
+  </div>
+  <div class="form-group">
+    <label for="period">The period of placement</label>
+    <select class="form-control" name='period' id="period">
+      <option>1 day</option>
+      <option>1 weeks</option>
+      <option>1 month</option>
+      <option>1 year</option>
+      <option>forever</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="Comentarios">Comentarios</label>
+    <textarea class="form-control" name='coment' id="Comentarios" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File photo</label>
+    <input type="file" class="form-control-file" name='photo' id="exampleInputFile" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">Try to show your product in full in the photo</small>
+  </div>
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
