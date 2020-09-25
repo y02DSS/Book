@@ -5,22 +5,25 @@ import test
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Baze.db'
-run_with_ngrok(app)
+#run_with_ngrok(app)
 db = SQLAlchemy(app)
+
+
+class Photos(db.Model):
+    ID = db.Column(db.Integer, primary_key=True)
+    Photo = db.Column(db.String())
 
 
 class GG(db.Model):
     ID = db.Column(db.Integer, primary_key=True)
     Name = db.Column(db.String(200))
-    ID_user = db.Column(db.String())
-    Address = db.Column(db.String())
-    Address_log = db.Column(db.String())
-    Goods = db.Column(db.String())
-    Period = db.Column(db.String())
+    Name_book = db.Column(db.String())
     Coment = db.Column(db.String())
+    Date = db.Column(db.String())
     Photo = db.Column(db.String())
-    Condition = db.Column(db.String())
-
+    Photo_2 = db.Column(db.String())
+    Photo_3 = db.Column(db.String())
+    
 
 @app.route('/main')
 def main():
@@ -29,18 +32,19 @@ def main():
 
 @app.route('/event')
 def event():
-    tasks = GG.query.all()
-    return render_template('event.html', tasks=tasks)
+    return render_template('event.html')
 
 
 @app.route('/our_library')
 def our_library():
-    return render_template('our_library.html')
+    tasks = GG.query.all()
+    return render_template('our_library.html', tasks=tasks)
 
 
 @app.route('/gallery')
 def gallery():
-    return render_template('gallery.html')
+    tasks = Photos.query.all()
+    return render_template('gallery.html', tasks=tasks)
 
 
 @app.route('/projects')
@@ -98,5 +102,5 @@ def create():
 
 
 if __name__ == '__main__':
-    #app.run(port=8080, host='0.0.0.0', debug=True)
-    app.run()
+    app.run(port=8080, host='0.0.0.0', debug=True)
+    #app.run()

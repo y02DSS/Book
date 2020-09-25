@@ -8,6 +8,38 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
     crossorigin="anonymous">
     <link rel="stylesheet" href="/static/css/style.css">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js></script>
+    <!-- fancyBox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+     <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- fancyBox3 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" crossorigin="anonymous" rel="stylesheet">
+    <style>
+        .thumb img {
+            -webkit-filter: grayscale(0);
+            filter: none;
+            border-radius: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        .thumb img:hover {
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+        }
+
+        .thumb {
+            padding: 5px;
+        }
+    </style>
   <style>
       hr{
           border: none; /* Убираем границу */
@@ -16,26 +48,9 @@
           height: 2px; /* Толщина линии */
           margin: 50px;
           }
-      {
-        margin: 0;
-        padding: 0;
-      }
-      html,
-      body {
-        height: 100%;
-      }
-      .wrapper {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
-      .content {
-        flex: 1 0 auto;
-      }
-      .footer {
-        flex: 0 0 auto;
-      }
+      
   </style>
+
   <title>ПАРАЛЛЕЛИ</title>
 
 </head>
@@ -44,7 +59,7 @@
 <div class="content">
   <div>
     <h1  class="ml-5">Сайт Калининградского ПЕН-центра
-    <img src="https://sun9-54.userapi.com/c857320/v857320278/17ab71/PLa_D6qPLTA.jpg" width=4% alt="бот"/>
+    <img src="https://i0.wampi.ru/2020/09/17/kisspng-book-discussion-club-paperback-clip-art-book-stack-png-5ab147d10371c8.4080003015215676970141.png" width=4% alt="бот"/>
     </h1>
     <p></p>
     <ul class="nav nav-pills nav-fill">
@@ -78,55 +93,43 @@
         </ul>
   </div>
   <p></p>
-  <h3 class="ml-5">Main</h3>
+  <h3 class="ml-5">Фотографии</h3>
   <hr>
-  <div style="width: 90%; margin-left: 5%;">
-    <div class="card-deck">
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Hi, bro</h5>
-          <p class="card-text">GoodsDelivery</p>
+
+  <div class="container">
+    <div class="row">
+      {% for Photos in tasks %}
+        <div class="col-lg-3 col-md-4 col-6 thumb">
+            <a data-fancybox="gallery" href="{{Photos.Photo_min}}">
+                <img class="img-fluid" src="{{Photos.Photo}}" alt="...">
+            </a>
         </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Hi, bro</h5>
-          <p class="card-text">GoodsDelivery</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-      <div class="card">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Hi, bro</h5>
-          <p class="card-text">GoodsDelivery</p>
-        </div>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
+        <a href="/example#myanchor2" 
+    onclick="setTimeout(location.reload.bind(location), 1)">
+</a>
+        {% endfor %}
     </div>
-  </div>
+</div>
+
    <p></p>
    <hr>
 <div class="footer">
     <div class="card bg-dark text-white">
-      <img src="https://sun1-15.userapi.com/ifbQNgHTvHVfWHY9bUYcX4FrK_UKkZ_lmog_Xg/CEIAdlR2QK0.jpg" class="card-img" alt="...">
+      <img src="https://ia.wampi.ru/2020/09/12/BEZYMYNNYId25bd9caca42346a.png" class="card-img" alt="...">
       <div class="card-img-overlay">
-        <h5 class="card-title">GoodsDelivery</h5>
-        <p class="card-text">This website it is property Sofronov Sergei ans Shkolnikov Elisei. All products it is forbidden to use it without written confirmation.</p>
-        <p class="card-text" align="right">2020. GoodsDelivery</p>
+        <h4 class="card-title">Сайт Калининградского ПЕН-центр <a href="https://yandex.ru">Яндекс</a></h4>
+        <h5 class='p-0 m-0'>Обратная связь:</h5>
+        <h6>
+          Почта - <br>
+          Телефон - <br>
+        </h6>
+        <p class="card-text" align="right">2020.© Сайт Калининградского ПЕН-центр</p>
+        <div></div>
       </div>
     </div>
   </div>
 </div>
-</div> 
+</div>
+
 </body>
 </html>
